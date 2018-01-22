@@ -1,7 +1,8 @@
 <?php 
 //フォームのデータ受け取り
-$title = $_POST["title"];
-$detail = $_POST["detail"];
+$element = $_POST["element"];
+$css = $_POST["css"];
+$tag = $_POST["tag"];
 
 
 //DB定義
@@ -12,24 +13,22 @@ const DB_NAME = "";
 
 //PDOでデータベース接続
 try {
-    // $pdo = new PDO('mysql:host=localhost;dbname=gsblog_db;charset=utf8','root','root');
-    $pdo = new PDO('mysql:host=localhost;dbname=gsblog_db;charset=utf8','root');
+    $pdo = new PDO('mysql:host=localhost;dbname=desing_db;charset=utf8','root');
 }catch (PDOException $e) {
     exit( 'DbConnectError:' . $e->getMessage());
 }
 
 // 実行したいSQL文
-// $sql = "INSERT INTO gsblog_table(id, title, detail, time) VALUES(NULL, 'はじめまして', 'はじめてPHPから投稿してます',systime())";
-$sql = "INSERT INTO gsblog_table(id, title, detail, time) VALUES(NULL, :title, :detail, sysdate())";
+$sql = "INSERT INTO css_t(id, element, css, tag, date) VALUES(NULL, :element, :css, :tag, sysdate())";
 
 //MySQLで実行したいSQLセット。プリペアーステートメントで後から値は入れる
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':title',$title, PDO::PARAM_STR);
-$stmt->bindValue(':detail',$detail, PDO::PARAM_STR);
+$stmt->bindValue(':element', $element, PDO::PARAM_STR);
+$stmt->bindValue(':css', $css, PDO::PARAM_STR);
+$stmt->bindValue(':tag', $tag, PDO::PARAM_STR);
 
 //実際に実行
 $flag = $stmt->execute();
-
 
 //実行完了した場合はentry.phpにリダイレクト
 //失敗した場合はエラーメッセージ表示
