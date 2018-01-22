@@ -1,0 +1,34 @@
+   .t{
+ font-size:30px;
+  color: #252525;
+    z-index: 400;
+    transition: 1s;
+    }
+    .t:hover{
+    color: #fff;
+    }
+#a{
+    margin-top: 15px;
+    width: 110px;
+    height: 50px;
+    border: solid 1px #000;
+    color: #333333;
+    background: none;
+    font-size: 20px;
+    text-align: center;
+    font-family: -webkit-pictograph;
+    z-index:300;
+}
+#a:hover{
+    margin-top: 15px;
+    width: 110px;
+    height: 50px;
+    border-radius: 10em;
+    border: solid 1px #fff;
+    color: #fff;
+    background: none;
+    font-size: 20px;
+    text-align: center;
+    font-family: -webkit-pictograph;
+    transition: 0.5s ease;
+}
