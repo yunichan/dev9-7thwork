@@ -270,8 +270,8 @@ if($flag==false){
             <textarea type="element" name="element" id="element" style="resize:none" placeholder="<div class='test'>test</div>"></textarea>
             <label for="title">ccs</label>
             <textarea name="css" id="css" cols="30" rows="10" class="uk-textarea" style="resize:none" placeholder=".test{&#13;&#10;color:#000;&#13;&#10;}"></textarea>
-            <label for="title">comment</label>
-            <textarea name="tag" id="tag" cols="30" rows="1" class="uk-textarea" style="resize:none" placeholder=""></textarea>
+            <!-- <label for="title">comment</label>
+            <textarea name="tag" id="tag" cols="30" rows="1" class="uk-textarea" style="resize:none" placeholder=""></textarea> -->
             <input type="submit" value="regist" id=sbmt>
         </form>    
     </div>

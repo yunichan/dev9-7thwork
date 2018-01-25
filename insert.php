@@ -51,7 +51,6 @@
 //フォームのデータ受け取り
 $element = $_POST["element"];
 $css = $_POST["css"];
-$tag = $_POST["tag"];
 
 
 //DB定義
@@ -68,13 +67,12 @@ try {
 }
 
 // 実行したいSQL文
-$sql = "INSERT INTO css_t(id, element, css, tag, date) VALUES(NULL, :element, :css, :tag, sysdate())";
+$sql = "INSERT INTO css_t(id, element, css, date) VALUES(NULL, :element, :css, sysdate())";
 
 //MySQLで実行したいSQLセット。プリペアーステートメントで後から値は入れる
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':element', $element, PDO::PARAM_STR);
 $stmt->bindValue(':css', $css, PDO::PARAM_STR);
-$stmt->bindValue(':tag', $tag, PDO::PARAM_STR);
 
 //実際に実行
 $flag = $stmt->execute();

@@ -56,6 +56,11 @@ if($flag==false){
         scroll-behavior: smooth;
         margin:0;
         color:#929292;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        
     }
     #top{
         width: 100vw;
@@ -249,7 +254,7 @@ if($flag==false){
         justify-content:center;
         align-items:center;
     }
-    input[type=text]{
+    #css_tarea{
         margin-top:2vh;
         width:50vw;
         height:80vh;
@@ -267,7 +272,7 @@ if($flag==false){
 
 <!-- 修正 -->
     <form action="update_css1.php" method="post" style='display:flex;'>
-        <input type="text" name="css" value="<?php print_r($result['css']);?>" style='display:flex;'>
+        <textarea name="css" id="css_tarea" cols="30" rows="10"><?php print_r($result['css']);?></textarea>
         <input type="hidden" name="id" value="<?=$id?>">
         <input type="submit" value="変更する">
     </form>
