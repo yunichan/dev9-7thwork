@@ -1,34 +1,212 @@
-   .t{
- font-size:30px;
-  color: #252525;
-    z-index: 400;
-    transition: 1s;
-    }
-    .t:hover{
-    color: #fff;
-    }
 #a{
-    margin-top: 15px;
     width: 110px;
     height: 50px;
-    border: solid 1px #000;
-    color: #333333;
-    background: none;
+    margin:auto;
+    color: #fff;
+    background: #d84848;
     font-size: 20px;
     text-align: center;
     font-family: -webkit-pictograph;
     z-index:300;
+    justify-content: center; 
+    display: inline-flex;
+    align-items: center;
+    transition: 0.5s ease;
 }
 #a:hover{
-    margin-top: 15px;
     width: 110px;
     height: 50px;
     border-radius: 10em;
     border: solid 1px #fff;
-    color: #fff;
-    background: none;
+    color: #d84848;
+    background: #fff;
     font-size: 20px;
     text-align: center;
     font-family: -webkit-pictograph;
     transition: 0.5s ease;
 }
+.t{
+    font-size:30px;
+    color: #929292;
+    z-index: 400;
+    transition: 0.5s;
+    margin:auto;
+}
+.t:hover{
+    color: #fff;
+    transition: 0.5s;
+    }
+.button-wrapper {
+    display: inline-block;
+    margin: 20px 5px;
+    padding: 40px;
+}
+.dark-button{
+    background: #333;
+}
+.button {
+    background: #fff;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transition: all .35s ease-in-out .35s;
+    margin: 0 auto;
+    width: 150px;
+    text-align: center;
+}
+.dark-button .button,
+.dark-button .button span {
+    background: #36B4C7;
+    color: #fff;
+}
+.dark-button .button:after,
+.dark-button .button:before,
+.dark-button .button:hover span {
+    background: #fff;
+    color: #444;
+} 
+span {
+    display: block;
+    padding: 15px 30px;
+    background: #fff;
+    z-index: 100;
+    position: relative;
+    transition: all .35s ease-in-out .35s;
+}
+.button:hover span {
+    background: #36B4C7;
+    color: #fff;
+    transition: all .35s ease-in-out .35s;
+}
+.button:after {
+    bottom: -100%;
+    right: -100%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #36B4C7;
+    transition: all .35s ease-in-out .5s;
+}
+.button:hover:after {
+    right: 0;
+    bottom: 0;
+    transition: all ease-in-out .35s;
+}
+.button:before {
+    top: -100%;
+    left: -100%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #36B4C7;
+    transition: all .35s ease-in-out .5s;
+}
+.button:hover:before {
+    left: 0;
+    top: 0;
+    transition: all ease-in-out .35s;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 30px rgba(black, .2);
+  background: lighten(#f0f4c3, 10%);
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave {
+  opacity: .4;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  background: #0af;
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  margin-top: -350px;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 3000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+  animation: drift 7000ms infinite linear;
+  opacity: .1;
+  background: yellow;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  line-height: 200px;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .4em;
+  font-size: 24px;
+  text-shadow: 0 1px 0 rgba(black, .1);
+  text-indent: .3em;
+}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+} 
+#c{
+    width: 15vw;
+    height:15vw;
+    transform: rotate(0deg);
+    transition: .2s;
+    position: relative;
+    float: left;
+    background:#ff52a2;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+#c:hover{
+    width: 15vw;
+    height:15vw;
+    border-radius: 50%;
+    transform: rotate(15deg);
+    background:#4599ea;
+}
+#cc{
+    position:absolute;
+    top:14vh;
+    font-size:5vh;
+    color:#fff;
+}
+222
+bb

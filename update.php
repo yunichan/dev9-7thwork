@@ -6,21 +6,38 @@ try {
     exit( 'DbConnectError:' . $e->getMessage());
 }
 
-// 実行したいSQL文（最新順番3つ取得）
-// $sql = 'SELECT*FROM css_t ORDER BY date DESC LIMIT 5';
-$sql = 'SELECT*FROM css_t ORDER BY date';
 
+$sql = 'SELECT*FROM css_t ORDER BY date';
 
 //MySQLで実行したいSQLセット。プリペアーステートメントで後から値は入れる
 $stmt = $pdo->prepare($sql);
 $flag = $stmt->execute(); 
 
-
 if($flag==false){
     $error = $stmt->errorInfo();
     exit("ErrorQuery:".$error[2]);
 }else{
+
+
+    if(empty($_POST)) {
+        echo "<a href='top.php'>こちらのページからどうぞ</a>";
+        exit();
+    }else{
+        if (!isset($_POST['id'])  || !is_numeric($_POST['id']) ){
+            echo "IDエラー";
+            exit();
+        }else{
+            //プリペアドステートメント
+            $id = $_POST['id'];
+            $stmt = $pdo->prepare("SELECT css FROM css_t WHERE id = '" . $id . "'");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
 ?>
+
+
+ 
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -189,33 +206,8 @@ if($flag==false){
         padding:1%;
         border-radius:10px;
         flex-direction:column;
-        position:relative;
     }
-    #elem_t{
-        width: 30vw;
-        height: 200px;
-        border: 5px solid #fff;
-        background:#e7dbff;
-        display:flex;
-        justify-content:flex-end;
-        align-items:center;
-        padding:1%;
-        border-radius:10px;
-        flex-direction:column;
-    }
-    #css_t{
-        width: 30vw;
-        height: 200px;
-        background:#a8e8f9a7;
-        display:flex;
-        justify-content:flex-end;
-        align-items:center;
-        padding:1%;
-        flex-direction:column;
-        border: 5px solid #fff;
-        border-radius:10px;
-    }
-    .edit{
+    #edit{
         display:flex;
         justify-content:center;
         align-items:center;
@@ -224,11 +216,13 @@ if($flag==false){
         display:flex;
         justify-content:center;
         align-items:center;
+        width: 10vw;
         height: 5vh;
     }
     #elem_text{
         width: 30vw;
         height: 200px;
+        border: 5px solid #fff;
         background:#e7dbff;
         overflow:auto;
         padding:1%;
@@ -237,10 +231,11 @@ if($flag==false){
     #css_text{
         width: 30vw;
         height: 200px;
-        background:none;
+        border: 5px solid #fff;
+        background:#a8e8f9a7;
         overflow:auto;
-        border-radius:10px;
         padding:1%;
+        border-radius:10px;
     }
 
     #disp_update{
@@ -249,7 +244,20 @@ if($flag==false){
         height:100vh;
     }
 
-
+    form{
+        width:100vw;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    input[type=text]{
+        margin-top:2vh;
+        width:50vw;
+        height:80vh;
+        color:#929292;
+        background:#333;
+        border:none;
+    }
     
 
 </style>
@@ -257,90 +265,21 @@ if($flag==false){
 </head>
 
 <body>
-    <div id="top">
-        <div id="toptext">animation memo</div>
-        <!-- <img src="img1.jpg" alt="" id="topimg"> -->
-    </div>
 
+<!-- 修正 -->
+    <form action="update1.php" method="post" style='display:flex;'>
+        <input type="text" name="css" value="<?php print_r($result['css']);?>" style='display:flex;'>
+        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="submit" value="変更する">
+    </form>
 
-    <div class="container">
-        <h1 id=regist>登録</h1>
-        <form action="insert.php" method="post">
-            <label for="title">html</label>
-            <textarea type="element" name="element" id="element" style="resize:none" placeholder="<div class='test'>test</div>"></textarea>
-            <label for="title">ccs</label>
-            <textarea name="css" id="css" cols="30" rows="10" class="uk-textarea" style="resize:none" placeholder=".test{&#13;&#10;color:#000;&#13;&#10;}"></textarea>
-            <label for="title">comment</label>
-            <textarea name="tag" id="tag" cols="30" rows="1" class="uk-textarea" style="resize:none" placeholder=""></textarea>
-            <input type="submit" value="regist" id=sbmt>
-        </form>    
-    </div>
-
-    <div id="disp_title">
-        <div id="elem" style='height:5vh; color:#fff; background:#e48280; justify-content:center'>result</div>
-        <div id="elem_text" style='height:5vh; justify-content:center; align-items:center; display:flex; color:#fff; background:#9581bd;border: 5px solid #fff; '>html</div>
-        <div id="css_text" style='height:5vh; justify-content:center; align-items:center; display:flex; color:#fff; background:#6baec1;border: 5px solid #fff;'>css</div>
-    </div>
-    <div id="disp">
-        <?php
-        //登録されたテキストをcssファイルに書き出し
-        $file_name = './style.css';
-        if(file_exists($file_name)){
-            unlink($file_name);
-        }
-        while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-            //先頭の空白をトリミング
-            $css = ltrim($result['css']);
-            $file = fopen($file_name,"a");	// ファイル読み込み
-            flock($file, LOCK_EX);			// ファイルロック
-            fwrite($file, $css."\n");       // "\n"は改行コード
-            flock($file, LOCK_UN);			// ファイルロック解除
-            fclose($file);
-            ?>
-        <div id=elem>
-            <?php echo $result['element'];?>
-            <div class="edit">
-                <form action="delete1.php" method="post" style='display:flex;'>
-                    <div id="delete"><input type="submit" value="Delete" style='color:#fff;'></div>
-                    <input type="hidden" name="id" value="<?=$result['id']?>">
-                </form>
-            </div>
-        </div>
-        <div id="elem_t">
-            <pre id=elem_text>
-                <?php
-                $new = htmlspecialchars($result['element'], ENT_QUOTES);        
-                echo $new
-                ?>
-            </pre>
-            <div class="edit">
-                <form action="update_ele.php" method="post" style='display:flex;'>
-                    <div id="update"><input type="submit" value="Update" style='color:#fff;'></div>
-                    <input type="hidden" name="id" value="<?=$result['id']?>">
-                </form>
-            </div>
-        </div>
-        <div id="css_t">
-            <pre id=css_text>
-                <?php echo $css?>
-            </pre>
-            <div class="edit">
-                <form action="update_css.php" method="post" style='display:flex;'>
-                    <div id="update"><input type="submit" value="Update" style='color:#fff;'></div>
-                    <input type="hidden" name="id" value="<?=$result['id']?>">
-                </form>
-            </div>  
-        </div>
-        <?php }?>
-    </div>
-    
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
 
 $(function(){
     $("#regist").click(function(){
         $("#regist").hide();
-        $("form").fadeIn('1000');
+        $("form").show();
         $("form").css({'display':'flex'});
         $(".container").css({'height':'100vh'});
         $(".container").css({'background-image':'url(img0.jpg)'});
@@ -355,7 +294,8 @@ $(function(){
 
 </body>
 </html>
-
-<?php 
+<?php
+        }
+    }
 }
-?>
+?> 
