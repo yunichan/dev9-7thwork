@@ -32,6 +32,24 @@ if($flag==false){
             // var_dump($stmt);
             $stmt->execute();
             header('Location: top.php#disp');
+
+
+
+        //style.cssの更新
+        $file_name = './style.css';
+        if(file_exists($file_name)){
+            unlink($file_name);
+        }
+        while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+            //先頭の空白をトリミング
+            $css = ltrim($result['css']);
+            $file = fopen($file_name,"a");	// ファイル読み込み
+            flock($file, LOCK_EX);			// ファイルロック
+            fwrite($file, $css."\n");       // "\n"は改行コード
+            flock($file, LOCK_UN);			// ファイルロック解除
+            fclose($file);
+        }
+
         }
     }
 

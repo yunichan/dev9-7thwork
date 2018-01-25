@@ -32,6 +32,7 @@ if($flag==false){
             $stmt = $pdo->prepare("SELECT css FROM css_t WHERE id = '" . $id . "'");
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -277,24 +278,7 @@ if($flag==false){
         <input type="submit" value="変更する">
     </form>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
 
-$(function(){
-    $("#regist").click(function(){
-        $("#regist").hide();
-        $("form").show();
-        $("form").css({'display':'flex'});
-        $(".container").css({'height':'100vh'});
-        $(".container").css({'background-image':'url(img0.jpg)'});
-        $(".container").css({'background-size':'cover'});
-    });
-});
-
-
-
-
-</script>
 
 </body>
 </html>
