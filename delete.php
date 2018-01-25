@@ -92,6 +92,7 @@ if($flag==false){
         padding:1%;
         flex-direction:column;
         position:relative;
+        color:#444;
     }
     #elem_t{
         width: 30vw;
@@ -120,12 +121,14 @@ if($flag==false){
         height: 200px;
         overflow:auto;
         padding:1%;
+        color:#444;
     }
     #css_text{
         width: 30vw;
         height: 200px;
         overflow:auto;
         padding:1%;
+        color:#444;
     }
 
     #sbmt{
@@ -136,10 +139,16 @@ if($flag==false){
         justify-content:center;
         border-radius:100px;
         color:#fff;
-        background:#ca5069;
+        background:#2f2e2e;
         border:none;
         margin:auto;
         margin-top:2vh;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+    #sbmt:hover{
+        background:#ca5069;
     }
 
 
@@ -175,7 +184,7 @@ if($flag==false){
         </div>
         <input type="submit" value="DELETE" id=sbmt>
         <input type="hidden" name="id" value="<?=$result['id']?>">
-    </form>
+
     </dev>
     <?php }
     }

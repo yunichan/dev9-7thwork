@@ -98,10 +98,16 @@ if($flag==false){
         margin-top:2vh;
         color:#929292;
         background:none;
-        border:none;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        padding:1%;
+        border: 1px solid #fff;
     }
     input[type=submit]:hover{
-        color:#000;
+        color:#fff;
+        background:#80a7e2;
+        border: 1px solid #80a7e2;
     }
     #disp_update{
         width: 30vw;
