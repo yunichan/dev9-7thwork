@@ -50,7 +50,7 @@ if($flag==false){
     <title>input</title>
     
 <style>
-    html,body{
+    /* html,body{
         width: 100%;
         height: 100%;
         font-family: Roboto,Arial,sans-serif;
@@ -232,7 +232,7 @@ if($flag==false){
         overflow:auto;
         padding:1%;
         border-radius:10px;
-    }
+    } */
     #css_text{
         width: 30vw;
         height: 200px;
@@ -248,7 +248,6 @@ if($flag==false){
         width: 30vw;
         height:100vh;
     }
-
     form{
         width:100vw;
         display:flex;
@@ -262,6 +261,48 @@ if($flag==false){
         color:#929292;
         background:#333;
         border:none;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        font-family: Roboto,Arial,sans-serif;
+        scroll-behavior: smooth;
+        margin:0;
+        color:#929292;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    input[type=submit]{
+        margin-top:2vh;
+        color:#929292;
+        background:none;
+        border:none;
+    }
+    #disp_update{
+        width: 30vw;
+        height:100vh;
+    }
+
+    form{
+        width:100vw;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+    }
+    input[type=text]{
+        margin-top:2vh;
+        width:50vw;
+        height:80vh;
+        color:#929292;
+        background:#333;
+        border:none;
+        padding:2%;
     }
     
 

@@ -49,184 +49,6 @@ if($flag==false){
     <title>input</title>
     
 <style>
-    html,body{
-        width: 100%;
-        height: 100%;
-        font-family: Roboto,Arial,sans-serif;
-        scroll-behavior: smooth;
-        margin:0;
-        color:#929292;
-    }
-    #top{
-        width: 100vw;
-        height:100vh;
-        background-image:url(img1.jpg);
-        background-size:cover;
-        animation: big 10s ease infinite;
-    }
-    @keyframes big{
-        0%{
-            transform: scale(1) translateY(0);
-        }
-        50%{
-            transform: scale(1.03);
-        }
-        0%{
-            transform: scale(1);
-        }
-    }
-    #toptext{
-        text-align: center;
-        margin-top: 6%;
-        color: #fff;
-        font-family: serif;
-        width: 100%;
-        position: absolute;
-        z-index: 10;
-        font-size: 50px;
-    }
-
-    .container{
-        width: 100%;
-        height: 17vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        font-size:3vh;
-        flex-direction:column;
-    }
-    #regist{
-        width:30vw;
-        height:7vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        border-radius:100px;
-        color:#fff;
-        background:#a76b9a;
-    }
-    #sbmt{
-        width:30vw;
-        height:7vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        border-radius:100px;
-        color:#fff;
-        background:#ca5069;
-        border:none;
-        margin:auto;
-        margin-top:2vh;
-    }
-
-    form{
-        display:none;
-        flex-direction:column;
-        width:60%;
-        margin:auto;
-        text-align:center;
-    }
-    ::placeholder{
-        color:#c1c1c1;
-    }
-    label[for=title]{
-        text-align:left;
-        height:6vh;
-        display:flex;
-        align-items:flex-end;
-        margin-bottom:1vh;
-    }
-    input[type=submit]{
-        margin-top:2vh;
-        color:#929292;
-        background:none;
-        border:none;
-    }
-    label,input{
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-    }
-    textarea{
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border-color: #fff;
-        color: #929292);
-        
-    }
-    
-    ul{
-        width: 100%;
-        height: 100%;
-    }
-    li{
-        width: 100%;
-        display: flex;
-        background:#333333;
-    }
-    #disp{
-        width: 100vw;
-        display:flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-    #disp_title{
-        width: 100vw;
-        display:flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:center; 
-        margin-top:1vh;       
-    }
-    .content{
-        width: 70%;
-        height: 100px;
-        overflow: auto;
-        background: #ffbbbb;
-    }
-    
-    #input{
-        width: 100%;
-        height: 100px;
-        background: #ff8888;
-        z-index: 10;
-    }
-    
-    #elem{
-        width: 30vw;
-        height: 200px;
-        border: 5px solid #fff;
-        background:#ffa5a5a5;
-        display:flex;
-        justify-content:flex-end;
-        align-items:center;
-        padding:1%;
-        border-radius:10px;
-        flex-direction:column;
-    }
-    #edit{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-    #update,#delete{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        width: 10vw;
-        height: 5vh;
-    }
-    #elem_text{
-        width: 30vw;
-        height: 200px;
-        border: 5px solid #fff;
-        background:#e7dbff;
-        overflow:auto;
-        padding:1%;
-        border-radius:10px;
-    }
     #css_text{
         width: 30vw;
         height: 200px;
@@ -242,12 +64,56 @@ if($flag==false){
         width: 30vw;
         height:100vh;
     }
+    form{
+        width:100vw;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    #e_tarea{
+        margin-top:2vh;
+        width:50vw;
+        height:80vh;
+        color:#929292;
+        background:#333;
+        border:none;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:2%;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        font-family: Roboto,Arial,sans-serif;
+        scroll-behavior: smooth;
+        margin:0;
+        color:#929292;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    input[type=submit]{
+        margin-top:2vh;
+        color:#929292;
+        background:none;
+        border:none;
+    }
+    input[type=submit]:hover{
+        color:#000;
+    }
+    #disp_update{
+        width: 30vw;
+        height:100vh;
+    }
 
     form{
         width:100vw;
         display:flex;
         justify-content:center;
         align-items:center;
+        flex-direction:column;
     }
     input[type=text]{
         margin-top:2vh;
@@ -256,6 +122,7 @@ if($flag==false){
         color:#929292;
         background:#333;
         border:none;
+        padding:2%;
     }
     
 
@@ -267,7 +134,8 @@ if($flag==false){
 
 <!-- 修正 -->
     <form action="update_ele1.php" method="post" style='display:flex;'>
-        <input type="text" name="element" value="<?php print_r($result['element']);?>" style='display:flex;'>
+        <!-- <input type="text" name="element" value="<?php print_r($result['element']);?>" style='display:flex;'> -->
+        <textarea name="element" id="e_tarea" cols="30" rows="10"><?php print_r($result['element']);?></textarea>
         <input type="hidden" name="id" value="<?=$id?>">
         <input type="submit" value="変更する">
     </form>

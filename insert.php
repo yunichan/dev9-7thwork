@@ -20,7 +20,7 @@
         justify-content:center;
         align-items:center;
         flex-direction:column;
-        background-image:url(img2.jpg);
+        background-image:url(img3.jpg);
         background-size:cover;
     }
     #comnt{
@@ -39,6 +39,12 @@
         color:#fff;
         background:#3e3d3d;
         margin:3vh;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+    #back:hover{
+        background:#d47a93;
     }
     a{
         text-decoration:none;

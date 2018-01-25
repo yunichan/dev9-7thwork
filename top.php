@@ -88,6 +88,12 @@ if($flag==false){
         border-radius:100px;
         color:#fff;
         background:#a76b9a;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+    #regist:hover{
+        background:#d83a74;
     }
     #sbmt{
         width:30vw;
@@ -101,6 +107,12 @@ if($flag==false){
         border:none;
         margin:auto;
         margin-top:2vh;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+    #sbmt:hover{
+        background:#50b3ca;
     }
 
     form{
@@ -220,12 +232,25 @@ if($flag==false){
         justify-content:center;
         align-items:center;
     }
+    #delete_btn, #eleUp_btn, #cssUp_btn{
+        color:#fff;
+    }
+    #delete_btn:hover{
+        color:#c16565;
+    }
+    #eleUp_btn:hover{
+        color:#8d70ad;
+    }
+    #cssUp_btn:hover{
+        color:#7096ad;
+    }
     #update,#delete{
         display:flex;
         justify-content:center;
         align-items:center;
         height: 5vh;
     }
+
     #elem_text{
         width: 30vw;
         height: 200px;
@@ -270,8 +295,6 @@ if($flag==false){
             <textarea type="element" name="element" id="element" style="resize:none" placeholder="<div class='test'>test</div>"></textarea>
             <label for="title">ccs</label>
             <textarea name="css" id="css" cols="30" rows="10" class="uk-textarea" style="resize:none" placeholder=".test{&#13;&#10;color:#000;&#13;&#10;}"></textarea>
-            <!-- <label for="title">comment</label>
-            <textarea name="tag" id="tag" cols="30" rows="1" class="uk-textarea" style="resize:none" placeholder=""></textarea> -->
             <input type="submit" value="regist" id=sbmt>
         </form>    
     </div>
@@ -300,8 +323,8 @@ if($flag==false){
         <div id=elem>
             <?php echo $result['element'];?>
             <div class="edit">
-                <form action="delete1.php" method="post" style='display:flex;'>
-                    <div id="delete"><input type="submit" value="Delete" style='color:#fff;'></div>
+                <form action="delete.php" method="post" style='display:flex;'>
+                    <div id="delete"><input type="submit" value="Delete" id="delete_btn"></div>
                     <input type="hidden" name="id" value="<?=$result['id']?>">
                 </form>
             </div>
@@ -315,7 +338,7 @@ if($flag==false){
             </pre>
             <div class="edit">
                 <form action="update_ele.php" method="post" style='display:flex;'>
-                    <div id="update"><input type="submit" value="Update" style='color:#fff;'></div>
+                    <div id="update"><input type="submit" value="Update" id="eleUp_btn"></div>
                     <input type="hidden" name="id" value="<?=$result['id']?>">
                 </form>
             </div>
@@ -326,7 +349,7 @@ if($flag==false){
             </pre>
             <div class="edit">
                 <form action="update_css.php" method="post" style='display:flex;'>
-                    <div id="update"><input type="submit" value="Update" style='color:#fff;'></div>
+                    <div id="update"><input type="submit" value="Update" id="cssUp_btn"></div>
                     <input type="hidden" name="id" value="<?=$result['id']?>">
                 </form>
             </div>  
